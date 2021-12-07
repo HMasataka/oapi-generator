@@ -4,7 +4,7 @@
 package Openapi
 
 import (
-	externalRef0 "github.com/caravan-inc/fankey-api-generator/model"
+	externalRef0 "github.com/caravan-inc/fankey-api-generator/model/param"
 )
 
 // FindPetRequest defines model for FindPetRequest.

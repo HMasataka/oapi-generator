@@ -1,0 +1,19 @@
+openapi: 3.0.1
+info:
+  title: fankey-api
+  version: '1.0.0'
+paths: {}
+components:
+  schemas:
+    sortBy:
+      type: string
+      enum:
+        - name
+        - id
+        - rating
+        - created
+        - modified
+        - random
+      x-go-custom-tag: 'db:"sort_by"'
+      x-oapi-codegen-extra-tags:
+        db: sort_by

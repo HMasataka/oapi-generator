@@ -1,0 +1,51 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: Fankey API
+  description: Fankey API
+paths:
+  /pets:
+    post:
+      summary: Returns all pets
+      description: fankey api
+      operationId: FindPets
+      parameters: []
+      responses:
+        '200':
+          description: pet response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FindPetResponse'
+      tags:
+        - Pet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FindPetRequest'
+components:
+  schemas:
+    FindPetRequest:
+      title: FindPetRequest
+      type: object
+      x-tags:
+        - pets
+      properties:
+        id:
+          type: string
+        sortDir:
+          $ref: ./models.yaml#/components/schemas/sortBy
+    FindPetResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Unique id of the pet
+        name:
+          type: string
+      required:
+        - id

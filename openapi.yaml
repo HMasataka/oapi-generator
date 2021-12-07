@@ -3,11 +3,13 @@ info:
   version: 1.0.0
   title: Fankey API
   description: Fankey API
+tags:
+  - name: pet
 paths:
   /pets:
     post:
       summary: Returns all pets
-      description: fankey api
+      description: ''
       operationId: FindPets
       parameters: []
       responses:
@@ -20,12 +22,30 @@ paths:
                 items:
                   $ref: '#/components/schemas/FindPetResponse'
       tags:
-        - Pet
+        - pet
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/FindPetRequest'
+    get:
+      summary: ''
+      operationId: GetPets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FindPetResponse'
+      parameters:
+        - schema:
+            $ref: ./params.yaml#/components/schemas/sortBy
+          in: query
+          name: sortBy
+      tags:
+        - pet
+      description: ''
 components:
   schemas:
     FindPetResponse:

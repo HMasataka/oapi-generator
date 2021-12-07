@@ -40,7 +40,7 @@ paths:
                 $ref: '#/components/schemas/FindPetResponse'
       parameters:
         - schema:
-            $ref: ./params.yaml#/components/schemas/sortBy
+            $ref: ./param.yaml#/components/schemas/sortBy
           in: query
           name: sortBy
       tags:
@@ -52,7 +52,7 @@ components:
       type: object
       properties:
         id:
-          $ref: ./params.yaml#/components/schemas/PetId
+          $ref: ./param.yaml#/components/schemas/PetId
         name:
           type: string
     FindPetRequest:
@@ -62,6 +62,6 @@ components:
         - pets
       properties:
         id:
-          $ref: ./params.yaml#/components/schemas/PetId
+          $ref: ./param.yaml#/components/schemas/PetId
         sortBy:
-          $ref: ./params.yaml#/components/schemas/sortBy
+          $ref: ./param.yaml#/components/schemas/sortBy

@@ -1,4 +1,6 @@
 gen:
-	oapi-codegen -generate types,skip-prune params.yaml > model/param/params.gen.go
-	oapi-codegen -generate types,skip-prune -import-mapping=./params.yaml:github.com/caravan-inc/fankey-api-generator/model/param openapi.yaml > model/payload/pets.gen.go
-	oapi-codegen -generate chi-server -import-mapping=./params.yaml:github.com/caravan-inc/fankey-api-generator/model/param openapi.yaml > api/pets.gen.go
+	mkdir -p domain/model
+	oapi-codegen -generate types,skip-prune -package model param.yaml > domain/model/param.gen.go
+	mkdir -p application/api/pet
+	oapi-codegen -generate types,skip-prune -package pet -import-mapping=./param.yaml:github.com/caravan-inc/fankey-api-generator/domain/model openapi.yaml > application/api/pet/pet.types.gen.go
+	oapi-codegen -generate chi-server -package pet -import-mapping=./param.yaml:github.com/caravan-inc/fankey-api-generator/domain/model openapi.yaml > application/api/pet/pet.server.gen.go

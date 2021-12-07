@@ -5,11 +5,12 @@ info:
   description: Fankey API
 tags:
   - name: pet
+  - name: user
 paths:
   /pets:
     post:
       summary: Returns all pets
-      description: ''
+      description: description
       operationId: FindPets
       parameters: []
       responses:
@@ -20,48 +21,88 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/FindPetResponse'
+                  $ref: '#/components/schemas/PostPetResponse'
       tags:
         - pet
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FindPetRequest'
+              $ref: '#/components/schemas/PostPetRequest'
     get:
-      summary: ''
-      operationId: GetPets
+      summary: List Pets
+      operationId: ListPets
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FindPetResponse'
+                $ref: '#/components/schemas/ListPetResponse'
       parameters:
         - schema:
-            $ref: ./param.yaml#/components/schemas/sortBy
+            $ref: ./param.yaml#/components/schemas/SortBy
           in: query
           name: sortBy
       tags:
         - pet
-      description: ''
+      description: description
+  /users:
+    post:
+      summary: PostUser
+      tags:
+        - user
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostUserResponse'
+      operationId: PostUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostUserRequest'
+      description: description
 components:
   schemas:
-    FindPetResponse:
-      type: object
-      properties:
-        id:
-          $ref: ./param.yaml#/components/schemas/PetId
-        name:
-          type: string
-    FindPetRequest:
-      title: FindPetRequest
+    PostPetResponse:
       type: object
       x-tags:
-        - pets
+        - pet
+      title: ''
       properties:
         id:
-          $ref: ./param.yaml#/components/schemas/PetId
-        sortBy:
-          $ref: ./param.yaml#/components/schemas/sortBy
+          type: string
+    PostPetRequest:
+      title: PostPetRequest
+      type: object
+      x-tags:
+        - pet
+      properties:
+        id:
+          type: string
+    PostUserRequest:
+      title: PostUserRequest
+      type: object
+      properties:
+        id:
+          type: string
+      x-tags:
+        - user
+    PostUserResponse:
+      title: PostUserResponse
+      type: object
+      properties:
+        id:
+          type: string
+      x-tags:
+        - user
+    ListPetResponse:
+      title: ListPetResponse
+      type: object
+      properties:
+        id:
+          type: string

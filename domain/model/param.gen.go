@@ -18,9 +18,6 @@ const (
 	SortByRating SortBy = "rating"
 )
 
-// PetId defines model for PetId.
-type PetId string
-
-// SortBy defines model for sortBy.
+// SortBy defines model for SortBy.
 type SortBy string
 

@@ -5,7 +5,7 @@ info:
 paths: {}
 components:
   schemas:
-    sortBy:
+    SortBy:
       type: string
       enum:
         - name
@@ -14,6 +14,4 @@ components:
         - created
         - modified
         - random
-    PetId:
-      title: PetId
-      type: string
+      title: SortBy

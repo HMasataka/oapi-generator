@@ -7,25 +7,28 @@ import (
 	externalRef0 "github.com/caravan-inc/fankey-api-generator/domain/model"
 )
 
-// FindPetRequest defines model for FindPetRequest.
-type FindPetRequest struct {
-	Id     *externalRef0.PetId  `json:"id,omitempty"`
-	SortBy *externalRef0.SortBy `json:"sortBy,omitempty"`
+// ListPetResponse defines model for ListPetResponse.
+type ListPetResponse struct {
+	Id *string `json:"id,omitempty"`
 }
 
-// FindPetResponse defines model for FindPetResponse.
-type FindPetResponse struct {
-	Id   *externalRef0.PetId `json:"id,omitempty"`
-	Name *string             `json:"name,omitempty"`
+// PostPetRequest defines model for PostPetRequest.
+type PostPetRequest struct {
+	Id *string `json:"id,omitempty"`
 }
 
-// GetPetsParams defines parameters for GetPets.
-type GetPetsParams struct {
+// PostPetResponse defines model for PostPetResponse.
+type PostPetResponse struct {
+	Id *string `json:"id,omitempty"`
+}
+
+// ListPetsParams defines parameters for ListPets.
+type ListPetsParams struct {
 	SortBy *externalRef0.SortBy `json:"sortBy,omitempty"`
 }
 
 // FindPetsJSONBody defines parameters for FindPets.
-type FindPetsJSONBody FindPetRequest
+type FindPetsJSONBody PostPetRequest
 
 // FindPetsJSONRequestBody defines body for FindPets for application/json ContentType.
 type FindPetsJSONRequestBody FindPetsJSONBody

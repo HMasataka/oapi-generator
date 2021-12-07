@@ -14,3 +14,6 @@ components:
         - created
         - modified
         - random
+    PetId:
+      title: PetId
+      type: string

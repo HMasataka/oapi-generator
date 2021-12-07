@@ -37,7 +37,7 @@ components:
         id:
           type: string
         sortDir:
-          $ref: ./models.yaml#/components/schemas/sortBy
+          $ref: ./params.yaml#/components/schemas/sortBy
     FindPetResponse:
       type: object
       properties:

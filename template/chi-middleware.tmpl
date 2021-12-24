@@ -2,6 +2,7 @@
 type ServerInterfaceWrapper struct {
     Handler ServerInterface
     HandlerMiddlewares []MiddlewareFunc
+    ResponseHandlerFunc func(w http.ResponseWriter, r *http.Request, res interface{}) error
     ErrorHandlerFunc func(w http.ResponseWriter, r *http.Request, err error)
 }
 
@@ -169,7 +170,16 @@ func (siw *ServerInterfaceWrapper) {{$opid}}(w http.ResponseWriter, r *http.Requ
   {{end}}
 
   var handler = func(w http.ResponseWriter, r *http.Request) {
-    siw.Handler.{{.OperationId}}(w, r{{genParamNames .PathParams}}{{if .RequiresParamObject}}, params{{end}})
+    res, err := siw.Handler.{{.OperationId}}(w, r{{genParamNames .PathParams}}{{if .RequiresParamObject}}, params{{end}})
+    if err != nil {
+        siw.ErrorHandlerFunc(w, r, err)
+        return
+    }
+    err = siw.ResponseHandlerFunc(w, r, res)
+    if err != nil {
+        siw.ErrorHandlerFunc(w, r, err)
+        return
+    }
 }
 
   for _, middleware := range siw.HandlerMiddlewares {

@@ -4,3 +4,4 @@ type ServerInterface interface {
 // ({{.Method}} {{.Path}})
 {{.OperationId}}(w http.ResponseWriter, r *http.Request{{genParamArgs .PathParams}}{{if .RequiresParamObject}}, params {{.OperationId}}Params{{end}})
 {{end}}
+}

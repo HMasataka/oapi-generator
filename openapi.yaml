@@ -21,14 +21,14 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/PostPetResponse'
+                  $ref: './payload.yaml#/components/schemas/PostPetResponse'
       tags:
         - pet
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PostPetRequest'
+              $ref: './payload.yaml#/components/schemas/PostPetRequest'
     get:
       summary: List Pets
       operationId: ListPets
@@ -38,10 +38,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListPetResponse'
+                $ref: './payload.yaml#/components/schemas/ListPetResponse'
       parameters:
         - schema:
-            $ref: ./param.yaml#/components/schemas/SortBy
+            $ref: './param.yaml#/components/schemas/SortBy'
           in: query
           name: sortBy
       tags:
@@ -58,51 +58,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PostUserResponse'
+                $ref: './payload.yaml#/components/schemas/PostUserResponse'
       operationId: PostUser
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PostUserRequest'
+              $ref: './payload.yaml#/components/schemas/PostUserRequest'
       description: description
 components:
-  schemas:
-    PostPetResponse:
-      type: object
-      x-tags:
-        - pet
-      title: ''
-      properties:
-        id:
-          type: string
-    PostPetRequest:
-      title: PostPetRequest
-      type: object
-      x-tags:
-        - pet
-      properties:
-        id:
-          type: string
-    PostUserRequest:
-      title: PostUserRequest
-      type: object
-      properties:
-        id:
-          type: string
-      x-tags:
-        - user
-    PostUserResponse:
-      title: PostUserResponse
-      type: object
-      properties:
-        id:
-          type: string
-      x-tags:
-        - user
-    ListPetResponse:
-      title: ListPetResponse
-      type: object
-      properties:
-        id:
-          type: string
+  schemas: {}

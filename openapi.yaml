@@ -11,7 +11,7 @@ paths:
     post:
       summary: Returns all pets
       description: description
-      operationId: FindPets
+      operationId: PostPet
       parameters: []
       responses:
         '200':
